@@ -12,7 +12,7 @@ public abstract class Toggle {
     private final Set<ApplicationToggle> dependentToggles;
     private final ToggleChangePolicy toggleChangePolicy;
 
-    public Toggle(final String name,
+    protected Toggle(final String name,
                   final ConfidenceLevel confidenceLevel,
                   final Set<ApplicationToggle> dependentToggles,
                   final ToggleChangePolicy toggleChangePolicy) {

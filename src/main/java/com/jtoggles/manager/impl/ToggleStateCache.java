@@ -11,6 +11,7 @@ import org.apache.log4j.Logger;
 
 import com.jtoggles.manager.ApplicationToggle;
 import com.jtoggles.model.ConfidenceLevel;
+import com.jtoggles.model.ConfidenceLevel;
 import com.jtoggles.model.Toggle;
 
 /**
