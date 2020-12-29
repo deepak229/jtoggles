@@ -10,8 +10,7 @@ import java.util.stream.Collectors;
 import org.apache.log4j.Logger;
 
 import com.jtoggles.manager.ApplicationToggle;
-import com.jtoggles.model.ConfidenceLevel;
-import com.jtoggles.model.ConfidenceLevel;
+import com.jtoggles.model.IConfidenceLevel;
 import com.jtoggles.model.Toggle;
 
 /**
@@ -24,10 +23,10 @@ public class ToggleStateCache {
     private static Map<ApplicationToggle, Boolean> toggleStates;
     private static Map<String, List<ToggleOverride>> toggleOverrides;
     private static ToggleStateCache instance;
-    private final ConfidenceLevel appConfidenceLevel;
+    private final IConfidenceLevel appConfidenceLevel;
 
-    private ToggleStateCache(final ConfidenceLevel confidenceLevel) {
-        this.appConfidenceLevel = confidenceLevel;
+    private ToggleStateCache(final IConfidenceLevel IConfidenceLevel) {
+        this.appConfidenceLevel = IConfidenceLevel;
     }
 
     static ToggleStateCache get() {
@@ -37,7 +36,7 @@ public class ToggleStateCache {
         return instance;
     }
 
-    synchronized static void init(final ConfidenceLevel confidenceLevel,
+    synchronized static void init(final IConfidenceLevel IConfidenceLevel,
                                   final Class<? extends ApplicationToggle> toggleClass) {
         if (instance != null) {
             throw new IllegalStateException("Toggle states are already initialized");
@@ -46,11 +45,11 @@ public class ToggleStateCache {
             throw new IllegalArgumentException("toggleClass is null");
         }
 
-        if (confidenceLevel == null) {
+        if (IConfidenceLevel == null) {
             throw new IllegalArgumentException("confidenceLevel is null");
         }
 
-        instance = new ToggleStateCache(confidenceLevel);
+        instance = new ToggleStateCache(IConfidenceLevel);
         if (toggleClass.getEnumConstants().length == 0) {
             return;
         }

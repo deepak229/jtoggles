@@ -5,19 +5,30 @@ import java.util.Set;
 import com.jtoggles.manager.ApplicationToggle;
 import com.jtoggles.policy.ToggleChangePolicy;
 
+/**
+ * <p>A class that holds the definition of a toggle.</p>
+ * <p>A toggle can be of two types:
+ *      <ul>
+ *          <li>Service Toggle</li>
+ *          <li>Tenanted Toggle</li>
+ *      </ul>
+ * </p>
+ *
+ * <p>Toggle's confidence level along with the dependencies determine the state of the toggle</p>
+ */
 public abstract class Toggle {
 
     private final String name;
-    private final ConfidenceLevel confidenceLevel;
+    private final IConfidenceLevel IConfidenceLevel;
     private final Set<ApplicationToggle> dependentToggles;
     private final ToggleChangePolicy toggleChangePolicy;
 
     protected Toggle(final String name,
-                  final ConfidenceLevel confidenceLevel,
+                  final IConfidenceLevel IConfidenceLevel,
                   final Set<ApplicationToggle> dependentToggles,
                   final ToggleChangePolicy toggleChangePolicy) {
         this.name = name;
-        this.confidenceLevel = confidenceLevel;
+        this.IConfidenceLevel = IConfidenceLevel;
         this.dependentToggles = dependentToggles;
         this.toggleChangePolicy = toggleChangePolicy;
     }
@@ -26,8 +37,8 @@ public abstract class Toggle {
         return this.name;
     }
 
-    public ConfidenceLevel getConfidenceLevel() {
-        return this.confidenceLevel;
+    public IConfidenceLevel getConfidenceLevel() {
+        return this.IConfidenceLevel;
     }
 
     public Set<ApplicationToggle> getDependentToggles() {

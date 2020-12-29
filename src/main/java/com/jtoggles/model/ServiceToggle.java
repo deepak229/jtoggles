@@ -13,9 +13,9 @@ public class ServiceToggle
     extends Toggle {
 
     public ServiceToggle(final String name,
-                         final ConfidenceLevel confidenceLevel,
+                         final IConfidenceLevel IConfidenceLevel,
                          final Set<ApplicationToggle> dependentToggles,
                          final ServiceToggleChangePolocy toggleChangePolicy) {
-        super(name, confidenceLevel, dependentToggles, toggleChangePolicy);
+        super(name, IConfidenceLevel, dependentToggles, toggleChangePolicy);
     }
 }

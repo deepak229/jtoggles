@@ -4,7 +4,7 @@ import javax.inject.Singleton;
 
 import com.jtoggles.manager.ApplicationToggle;
 import com.jtoggles.manager.ToggleManager;
-import com.jtoggles.model.ConfidenceLevel;
+import com.jtoggles.model.IConfidenceLevel;
 
 /**
  @author narasimha.s
@@ -14,9 +14,22 @@ import com.jtoggles.model.ConfidenceLevel;
 public class ToggleManagerImpl
     implements ToggleManager {
 
-    public ToggleManagerImpl(final ConfidenceLevel confidenceLevel,
+    private static ToggleManager INSTANCE;
+
+    public ToggleManagerImpl(final IConfidenceLevel IConfidenceLevel,
                              final Class<? extends ApplicationToggle> toggleDefinitionClass) {
-        ToggleStateCache.init(confidenceLevel, toggleDefinitionClass);
+        if (INSTANCE != null){
+            throw new IllegalStateException("Toggle is already initialized.");
+        }
+        ToggleStateCache.init(IConfidenceLevel, toggleDefinitionClass);
+        INSTANCE = this;
+    }
+
+    public static ToggleManager get(){
+        if(INSTANCE == null){
+            throw new IllegalStateException("Toggle is NOT initialized.");
+        }
+        return INSTANCE;
     }
 
     @Override

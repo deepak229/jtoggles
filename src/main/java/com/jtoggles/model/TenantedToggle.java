@@ -13,9 +13,9 @@ public class TenantedToggle
     extends Toggle {
 
     public TenantedToggle(final String name,
-                          final ConfidenceLevel confidenceLevel,
+                          final IConfidenceLevel IConfidenceLevel,
                           final Set<ApplicationToggle> dependentToggles,
                           final TenantedToggleChangePolicy toggleChangePolicy) {
-        super(name, confidenceLevel, dependentToggles, toggleChangePolicy);
+        super(name, IConfidenceLevel, dependentToggles, toggleChangePolicy);
     }
 }
