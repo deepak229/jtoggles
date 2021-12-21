@@ -15,9 +15,9 @@ package com.jtoggles.model;
  * The library comes with default confidence levels
  * <ul>
  *     <li>OFF (0)</li>
- *     <li>INTERNAL(1)</li>
- *     <li>PREVIEW (2)</li>
- *     <li>PRODUCTION (3)</li>
+ *     <li>INTERNAL(5)</li>
+ *     <li>PREVIEW (10)</li>
+ *     <li>PRODUCTION (15)</li>
  * </ul>
  *
  * <p>If the appliation is running in Production confidence level, the toggle which is in Internal confidence level will be OFF</p>

@@ -3,9 +3,9 @@ package com.jtoggles.model;
 public enum ConfidenceLevel
     implements IConfidenceLevel {
     OFF(0),
-    INTERNAL(1),
-    PREVIEW(2),
-    PRODUCTION(3);
+    INTERNAL(5),
+    PREVIEW(10),
+    PRODUCTION(15);
 
     private final int level;
 
